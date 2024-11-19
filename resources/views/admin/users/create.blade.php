@@ -74,7 +74,7 @@
                         {!! Form::select('roles[]', $roles, [], ['placeholder' => 'Select One', 'class' => 'form-control', 'multiple']) !!}
                     </div>
                 </div>
-                <div class="mt-1 d-flex justify-content-end">
+                <div class="mt-4">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

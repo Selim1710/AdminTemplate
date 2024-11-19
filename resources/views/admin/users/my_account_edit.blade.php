@@ -11,6 +11,7 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">CRM</a></li>
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Permission Manage</a></li>
                         <li class="breadcrumb-item active">Edit User!</li>
                     </ol>
@@ -41,7 +42,7 @@
         @endif
 
         <div class="card-body">
-            {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', $user->id]]) !!}
+            {!! Form::model($user, ['method' => 'POST', 'route' => ['my_account_update', $user->id]]) !!}
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -57,6 +58,19 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
+                        <strong>Phone:</strong>
+                        {!! Form::text('phone', null, ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Address:</strong>
+                        {!! Form::text('address', null, ['placeholder' => 'Address', 'class' => 'form-control']) !!}
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
                         <strong>Password:</strong>
                         {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control']) !!}
                     </div>
@@ -67,14 +81,9 @@
                         {!! Form::password('confirm-password', ['placeholder' => 'Confirm Password', 'class' => 'form-control']) !!}
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Role:</strong>
-                        {!! Form::select('roles[]', $roles, $userRole, ['class' => 'form-control', 'multiple']) !!}
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <button type="submit" class="btn btn-primary  mt-4">Submit</button>
+             
+                <div class="col-xs-12 col-sm-12 col-md-12 text-end">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
             {!! Form::close() !!}

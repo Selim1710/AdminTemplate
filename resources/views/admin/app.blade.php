@@ -74,7 +74,7 @@
                             <div class=" dropdown-header noti-title">
                                 <h6 class="text-overflow m-0">Welcome !</h6>
                             </div>
-                            <a href="#" class="dropdown-item">
+                            <a href="{{ route('user.my-account.edit') }}" class="dropdown-item">
                                 <i class="ri-account-circle-line fs-18 align-middle me-1"></i>
                                 <span>My Account</span>
                             </a>
@@ -95,12 +95,16 @@
 
         <div class="leftside-menu">
             <a href="{{ route('dashboard') }}" class="logo logo-light">
-                <span class="logo-lg">
-                    <img src="{{ URL::to('backend/images/etl_logo.png') }}" alt="logo" style="height: 50px;">
-                </span>
-                <span class="logo-sm">
-                    <img src="{{ URL::to('backend/images/etl_logo.png') }}" alt="small logo">
-                </span>
+                @if (!empty($site_setting->logo))
+                    <span class="logo-lg">
+                        <img src="{{ asset($site_setting ? $site_setting->logo : '') }}" alt="logo"
+                            style="height: 50px;">
+                    </span>
+                @else
+                    <span class="logo-sm">
+                        <img src="{{ URL::to('backend/images/bb.png') }}" alt="small logo">
+                    </span>
+                @endif
             </a>
 
             <div class="h-100" id="leftside-menu-container" data-simplebar>

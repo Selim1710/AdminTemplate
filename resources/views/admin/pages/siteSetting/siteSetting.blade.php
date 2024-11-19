@@ -23,184 +23,139 @@
                             <h4 class="header-title">Form</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('site-settings.createOrUpdate',$siteSettings ? $siteSettings->id : null)}}" method="post" enctype="multipart/form-data">
+                            <form
+                                action="{{ route('site-settings.createOrUpdate', $siteSettings ? $siteSettings->id : null) }}"
+                                method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-4">
                                         <label for="name" class="form-label">Site Name</label>
-                                        <input type="text" class="form-control" name="name" value="{{$siteSettings?$siteSettings->name:''}}"
-                                               placeholder="Enter Name">
+                                        <input type="text" class="form-control" name="name"
+                                            value="{{ $siteSettings ? $siteSettings->name : '' }}" placeholder="Enter Name">
                                     </div>
 
                                     <div class="mb-3 col-md-4">
                                         <label for="name" class="form-label">Site Title</label>
-                                        <input type="text" class="form-control" name="title" value="{{$siteSettings?$siteSettings->title:''}}"
-                                               placeholder="Enter Name">
-                                    </div>
-
-                                    <div class="mb-3 col-md-4">
-                                        <label for="logo" class="form-label">Site Preview Image</label>
-                                        <input type="file" class="form-control" name="site_preview_image" value="{{$siteSettings?$siteSettings->site_preview_image:''}}"
-                                               placeholder="Enter Logo">
-                                        @if($siteSettings? $siteSettings->site_preview_image:'')
-                                            <img src="{{asset($siteSettings? $siteSettings->site_preview_image:'' )}}" alt="Current Image" class="mt-2" style="max-width: 50px;">
-                                        @endif
-                                    </div>
-
-                                    <div class="mb-3 col-md-4">
-                                        <label for="logo" class="form-label">Logo</label>
-                                        <input type="file" class="form-control" name="logo" value="{{$siteSettings?$siteSettings->logo:''}}"
-                                               placeholder="Enter Logo">
-                                        @if($siteSettings? $siteSettings->logo:'')
-                                            <img src="{{asset($siteSettings?$siteSettings->logo:'')}}" alt="Current Image" class="mt-2" style="max-width: 50px;">
-                                        @endif
-                                    </div>
-                                    <div class="mb-3 col-md-4">
-                                        <label for="favicon" class="form-label">Favicon</label>
-                                        <input type="file" class="form-control" name="favicon" value="{{$siteSettings?$siteSettings->favicon:''}}"
-                                               placeholder="Favicon">
-                                        @if($siteSettings?$siteSettings->favicon:'')
-                                            <img src="{{asset($siteSettings?$siteSettings->favicon:'')}}" alt="Current Image" class="mt-2" style="max-width: 50px;">
-                                        @endif
+                                        <input type="text" class="form-control" name="title"
+                                            value="{{ $siteSettings ? $siteSettings->title : '' }}"
+                                            placeholder="Enter Name">
                                     </div>
                                     <div class="mb-3 col-md-4">
                                         <label for="phone" class="form-label">Phone</label>
-                                        <input type="number" class="form-control" name="phone" value="{{$siteSettings?$siteSettings->phone:''}}"
-                                               placeholder="Password">
+                                        <input type="text" class="form-control" name="phone"
+                                            value="{{ $siteSettings ? $siteSettings->phone : '' }}" placeholder="Enter phone">
                                     </div>
-                                </div>
 
-                                <div class="row g-2">
+                                    
                                     <div class="mb-3 col-md-4">
                                         <label for="inputEmail4" class="form-label">Email</label>
-                                        <input type="email" class="form-control" name="email" value="{{$siteSettings?$siteSettings->email:''}}"
-                                               placeholder="Enter Email">
+                                        <input type="text" class="form-control" name="email"
+                                            value="{{ $siteSettings ? $siteSettings->email : '' }}"
+                                            placeholder="Enter Email">
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label for="address" class="form-label">Address En</label>
-                                        <input type="text" class="form-control" name="address" value="{{$siteSettings?$siteSettings->address:''}}"
-                                               placeholder="Enter Address">
-                                    </div>
-                                    <div class="mb-3 col-md-4">
-                                        <label for="address" class="form-label">Address Bn</label>
-                                        <input type="text" class="form-control" name="address_bn" value="{{$siteSettings?$siteSettings->address_bn:''}}"
-                                               placeholder="Enter Address">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" class="form-control" name="address"
+                                            value="{{ $siteSettings ? $siteSettings->address : '' }}"
+                                            placeholder="Enter Address">
                                     </div>
                                     <div class="mb-3 col-md-4">
                                         <label for="short_description" class="form-label">Short Description</label>
-                                        <input type="text" class="form-control" name="short_description" value="{{$siteSettings?$siteSettings->short_description:''}}"
-                                               placeholder="Short Description">
+                                        <input type="text" class="form-control" name="short_description"
+                                            value="{{ $siteSettings ? $siteSettings->short_description : '' }}"
+                                            placeholder="Short Description">
                                     </div>
-                                </div>
-
-                                <div class="row g-2">
+                               
                                     <div class="mb-3 col-md-4">
                                         <label for="site_link" class="form-label">Website Link</label>
-                                        <input type="text" class="form-control" name="site_link" value="{{$siteSettings?$siteSettings->site_link:''}}"
-                                               placeholder="Enter Link">
+                                        <input type="url" class="form-control" name="site_link"
+                                            value="{{ $siteSettings ? $siteSettings->site_link : '' }}"
+                                            placeholder="Enter Link">
                                     </div>
                                     <div class="mb-3 col-md-4">
                                         <label for="inputPassword4" class="form-label">Facebook Link</label>
-                                        <input type="text" class="form-control" name="facebook_link" value="{{$siteSettings?$siteSettings->facebook_link:''}}"
-                                               placeholder="Facebook Link">
+                                        <input type="url" class="form-control" name="facebook_link"
+                                            value="{{ $siteSettings ? $siteSettings->facebook_link : '' }}"
+                                            placeholder="Facebook Link">
                                     </div>
                                     <div class="mb-3 col-md-4">
                                         <label for="twitter_link" class="form-label">Twitter Link</label>
-                                        <input type="text" class="form-control" name="twitter_link" value="{{$siteSettings?$siteSettings->twitter_link:''}}"
-                                               placeholder="Twitter Link">
+                                        <input type="url" class="form-control" name="twitter_link"
+                                            value="{{ $siteSettings ? $siteSettings->twitter_link : '' }}"
+                                            placeholder="Twitter Link">
                                     </div>
-                                </div>
-
-                                <div class="row g-2">
+                           
                                     <div class="mb-3 col-md-4">
                                         <label for="instagram_link" class="form-label">Instagram Link</label>
-                                        <input type="text" class="form-control" name="instagram_link" value="{{$siteSettings?$siteSettings->instagram_link:''}}"
-                                               placeholder="Instagram Link">
+                                        <input type="url" class="form-control" name="instagram_link"
+                                            value="{{ $siteSettings ? $siteSettings->instagram_link : '' }}"
+                                            placeholder="Instagram Link">
                                     </div>
                                     <div class="mb-3 col-md-4">
                                         <label for="youtube_link" class="form-label">Youtube Link</label>
-                                                <input type="text" class="form-control" name="youtube_link" value="{{$siteSettings?$siteSettings->youtube_link:''}}"
-                                               placeholder="Youtube Link">
+                                        <input type="url" class="form-control" name="youtube_link"
+                                            value="{{ $siteSettings ? $siteSettings->youtube_link : '' }}"
+                                            placeholder="Youtube Link">
                                     </div>
                                     <div class="mb-3 col-md-4">
                                         <label for="linkedin_link" class="form-label">Linkedin Link</label>
-                                        <input type="text" class="form-control" name="linkedin_link" value="{{$siteSettings?$siteSettings->linkedin_link:''}}"
-                                               placeholder="Linkedin Link">
+                                        <input type="url" class="form-control" name="linkedin_link"
+                                            value="{{ $siteSettings ? $siteSettings->linkedin_link : '' }}"
+                                            placeholder="Linkedin Link">
+                                    </div>
+
+                                    <div class="mb-3 col-md-4 d-flex">
+                                        <div>
+                                            <label for="logo" class="form-label">Site Preview Image</label>
+                                            <input type="file" class="form-control" name="site_preview_image"
+                                                value="{{ $siteSettings ? $siteSettings->site_preview_image : '' }}"
+                                                placeholder="Enter Logo">
+                                        </div>
+                                        @if ($siteSettings ? $siteSettings->site_preview_image : '')
+                                            <div class="ml-2">
+                                                <img src="{{ asset($siteSettings ? $siteSettings->site_preview_image : '') }}"
+                                                    alt="Current Image" class="mt-2"
+                                                    style="max-width: 80px;margin-left:15px">
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    <div class="mb-3 col-md-4 d-flex">
+                                        <div>
+                                            <label for="logo" class="form-label">Logo</label>
+                                            <input type="file" class="form-control" name="logo"
+                                                value="{{ $siteSettings ? $siteSettings->logo : '' }}"
+                                                placeholder="Enter Logo">
+                                        </div>
+                                        @if ($siteSettings ? $siteSettings->logo : '')
+                                            <div class="ml-2">
+                                                <img src="{{ asset($siteSettings ? $siteSettings->logo : '') }}"
+                                                    alt="Current Image" class="mt-2"
+                                                    style="max-width: 80px;margin-left:15px">
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="mb-3 col-md-4 d-flex">
+                                        <div>
+                                            <label for="favicon" class="form-label">Favicon</label>
+                                            <input type="file" class="form-control" name="favicon"
+                                                value="{{ $siteSettings ? $siteSettings->favicon : '' }}"
+                                                placeholder="Favicon">
+                                        </div>
+                                        <div class="ml-2">
+                                            @if ($siteSettings ? $siteSettings->favicon : '')
+                                                <img src="{{ asset($siteSettings ? $siteSettings->favicon : '') }}"
+                                                    alt="Current Image" class="mt-2"
+                                                    style="max-width: 80px;margin-left:15px">
+                                            @endif
+                                        </div>
                                     </div>
 
                                     <div class="mb-3 col-md-12">
                                         <label for="linkedin_link" class="form-label">Meta Description</label>
-                                        <textarea class="form-control" name="meta_description" rows="5" placeholder="Enter the Description">{{ strip_tags($siteSettings?$siteSettings->details:'') }}</textarea>
+                                        <textarea class="form-control" name="meta_description" rows="5" placeholder="Enter the Description">{{ strip_tags($siteSettings ? $siteSettings->meta_description : '') }}</textarea>
                                     </div>
-
-
-
-                                    <div class="mb-3 col-md-4">
-                                        <label for="logo" class="form-label">Team Banner</label>
-                                        <input type="file" class="form-control" name="team_banner" value="{{$siteSettings?$siteSettings->team_banner:''}}">
-                                        @if($siteSettings? $siteSettings->team_banner:'')
-                                            <img src="{{asset($siteSettings? $siteSettings->team_banner:'' )}}" alt="Current Image" class="mt-2" style="max-width: 100px;">
-                                        @endif
-                                    </div>
-
-                                    <div class="mb-3 col-md-4">
-                                        <label for="logo" class="form-label">Notice Banner</label>
-                                        <input type="file" class="form-control" name="notice_banner" value="{{$siteSettings?$siteSettings->notice_banner:''}}">
-                                        @if($siteSettings? $siteSettings->notice_banner:'')
-                                            <img src="{{asset($siteSettings?$siteSettings->notice_banner:'')}}" alt="Current Image" class="mt-2" style="max-width: 100px;">
-                                        @endif
-                                    </div>
-                                    <div class="mb-3 col-md-4">
-                                        <label for="favicon" class="form-label">News Banner</label>
-                                        <input type="file" class="form-control" name="news_banner" value="{{$siteSettings?$siteSettings->news_banner:''}}">
-                                        @if($siteSettings?$siteSettings->news_banner:'')
-                                            <img src="{{asset($siteSettings?$siteSettings->news_banner:'')}}" alt="Current Image" class="mt-2" style="max-width: 100px;">
-                                        @endif
-                                    </div>
-                                    <div class="mb-3 col-md-4">
-                                        <label for="logo" class="form-label">Project Banner</label>
-                                        <input type="file" class="form-control" name="project_banner" value="{{$siteSettings?$siteSettings->project_banner:''}}">
-                                        @if($siteSettings? $siteSettings->project_banner:'')
-                                            <img src="{{asset($siteSettings?$siteSettings->project_banner:'')}}" alt="Current Image" class="mt-2" style="max-width: 100px;">
-                                        @endif
-                                    </div>
-                                    <div class="mb-3 col-md-4">
-                                        <label for="favicon" class="form-label">Contact Banner</label>
-                                        <input type="file" class="form-control" name="contact_banner" value="{{$siteSettings?$siteSettings->contact_banner:''}}">
-                                        @if($siteSettings?$siteSettings->contact_banner:'')
-                                            <img src="{{asset($siteSettings?$siteSettings->contact_banner:'')}}" alt="Current Image" class="mt-2" style="max-width: 100px;">
-                                        @endif
-                                    </div>
-
-                                    <div class="mb-3 col-md-4">
-                                        <label for="favicon" class="form-label">Training Banner</label>
-                                        <input type="file" class="form-control" name="training_banner" value="{{$siteSettings?$siteSettings->training_banner:''}}">
-                                        @if($siteSettings?$siteSettings->training_banner:'')
-                                            <img src="{{asset($siteSettings?$siteSettings->training_banner:'')}}" alt="Current Image" class="mt-2" style="max-width: 100px;">
-                                        @endif
-                                    </div>
-
-
-                                    <div class="mb-3 col-md-4">
-                                        <label for="favicon" class="form-label">Object Of Program 1</label>
-                                        <input type="file" class="form-control" name="object_of_project_image_1" value="{{$siteSettings?$siteSettings->object_of_project_image_1:''}}">
-                                        @if($siteSettings?$siteSettings->object_of_project_image_1:'')
-                                            <img src="{{asset($siteSettings?$siteSettings->object_of_project_image_1:'')}}" alt="Current Image" class="mt-2" style="max-width: 100px;">
-                                        @endif
-                                    </div>
-
-                                    <div class="mb-3 col-md-4">
-                                        <label for="favicon" class="form-label">Object Of Program 2</label>
-                                        <input type="file" class="form-control" name="object_of_project_image_2" value="{{$siteSettings?$siteSettings->object_of_project_image_2:''}}">
-                                        @if($siteSettings?$siteSettings->object_of_project_image_2:'')
-                                            <img src="{{asset($siteSettings?$siteSettings->object_of_project_image_2:'')}}" alt="Current Image" class="mt-2" style="max-width: 100px;">
-                                        @endif
-                                    </div>
-
-
-
                                 </div>
-
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </form>
                         </div>

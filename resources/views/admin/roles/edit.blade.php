@@ -16,11 +16,12 @@
     </div>
     <div class="card-header">
         <div class="d-flex justify-content-end">
-            <a class="btn btn-success" href="{{ route('roles.index') }}">Back</a>
+            @can('role-create')
+                <a class="btn btn-success" href="{{ route('roles.index') }}">Back</a>
+            @endcan
         </div>
     </div>
     <br>
-
 
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -34,27 +35,46 @@
     @endif
 
 
-    {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+    {!! Form::model($role, ['method' => 'PATCH', 'route' => ['roles.update', $role->id]]) !!}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Name:</strong>
-                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                <h4> <label>Role Name:</label> </h4>
+                {!! Form::text('name', null, ['placeholder' => 'Enter Role Name', 'class' => 'form-control']) !!}
             </div>
         </div>
+
+        <!-- permission -->
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Permission:</strong>
-                <br/>
-                @foreach($permission as $value)
-                    <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                        {{ $value->name }}</label>
-                    <br/>
-                @endforeach
+            <div class="card mt-2">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h4><strong class="text-capitalize">permission</strong></h4>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        @foreach ($permission as $value)
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <label>
+                                    <h4 class="text-gg">
+                                        {{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, ['class' => 'name']) }}
+                                        {{ $value->name }}
+                                    </h4>
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 ">
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+        <!-- submit btn -->
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="card mt-2">
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
         </div>
     </div>
     {!! Form::close() !!}
